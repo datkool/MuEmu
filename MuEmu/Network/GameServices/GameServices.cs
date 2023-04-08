@@ -2684,5 +2684,54 @@ namespace MuEmu.Network.GameServices
             @char.Ruud -= (uint)it.BasicInfo.Ruud;
             await session.SendAsync(new SBuy { Result = result, ItemInfo = it.GetBytes() });
         }
+
+        [MessageHandler(typeof(CHelperSettingSave))]
+        public async Task CHelperSettingSave(GSSession session, CHelperSettingSave message)
+        {
+            using (var db = new GameContext())
+            {
+                var helper = db.MuHelper.First(x => x.CharacterId == session.Player.Character.Id);
+                bool newRow = false;
+
+                if(helper == null)
+                {
+                    helper = new MuHelperDto
+                    {
+                        CharacterId = session.Player.Character.Id,
+                    };
+                    newRow = true;
+                }
+
+                helper.OptionFlag1 = message.OptionFlag1;
+                helper.OptionFlag2 = message.OptionFlag2;
+                helper.ItemPickFlag = message.ItemPickFlag;
+                helper.HuntingRange = message.HuntingRange;
+                helper.Distance = message.Distance;
+                helper.AttackSkill1 = message.AttackSkill1;
+                helper.AttackSecSkill1 = message.AttackSecSkill1;
+                helper.AttackSecSkill2 = message.AttackSecSkill2;
+                helper.AttackSecDelay1 = message.AttackSecDelay1;
+                helper.AttackSecDelay2 = message.AttackSecDelay2;
+                helper.BuffSkill1 = message.BuffSkill1;
+                helper.BuffSkill2 = message.BuffSkill2;
+                helper.BuffSkill3 = message.BuffSkill3;
+                helper.TimeSpaceCasting = message.TimeSpaceCasting;
+                helper.PercentAutoPot = message.PercentAutoPot;
+                helper.PercentAutoHeal = message.PercentAutoHeal;
+                helper.PercentAutoPartyHeal = message.PercentAutoPartyHeal;
+                helper.PercentDrainLife = message.PercentDrainLife;
+                helper.PickItemList = message.PickItemList;
+                helper.BuffItem1 = message.BuffItem1;
+                helper.BuffItem2 = message.BuffItem2;
+                helper.BuffItem3 = message.BuffItem3;
+
+                if (newRow)
+                    db.MuHelper.Add(helper);
+                else
+                    db.MuHelper.Update(helper);
+
+                await db.SaveChangesAsync();
+            }
+        }
     }
 }

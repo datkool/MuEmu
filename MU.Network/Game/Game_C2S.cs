@@ -1259,4 +1259,31 @@ namespace MU.Network.Game
     {
         [WZMember(0)] public byte Slot { get; set; }
     }
+
+    [WZContract]
+    public class CHelperSettingSave : IGameMessage
+    {
+        [WZMember(0)] public int ItemPickFlag { get; set; }
+        [WZMember(1)] public int HuntingRange { get; set; }
+        [WZMember(2)] public int Distance { get; set; }
+        [WZMember(3)] public int AttackSkill1 { get; set; }
+        [WZMember(4)] public int AttackSecSkill1 { get; set; }
+        [WZMember(5)] public int AttackSecSkill2 { get; set; }
+        [WZMember(6)] public int AttackSecDelay1 { get; set; }
+        [WZMember(7)] public int AttackSecDelay2 { get; set; }
+        [WZMember(8)] public int TimeSpaceCasting { get; set; }
+        [WZMember(9)] public int BuffSkill1 { get; set; }
+        [WZMember(10)] public int BuffSkill2 { get; set; }
+        [WZMember(11)] public int BuffSkill3 { get; set; }
+        [WZMember(12)] public int PercentAutoPot { get; set; }
+        [WZMember(13)] public int PercentAutoHeal { get; set; }
+        [WZMember(14)] public int PercentDrainLife { get; set; }
+        [WZMember(15)] public int PercentAutoPartyHeal { get; set; }
+        [WZMember(16)] public int OptionFlag1 { get; set; }
+        [WZMember(17)] public int OptionFlag2 { get; set; }
+        [WZMember(18)] public string PickItemList { get; set; }
+        [WZMember(19)] public int BuffItem1 { get; set; }
+        [WZMember(20)] public int BuffItem2 { get; set; }
+        [WZMember(21)] public int BuffItem3 { get; set; }
+    }
 }

@@ -51,9 +51,9 @@ namespace MuEmu.Entity
                 .HasMany(x => x.Items)
                 .WithOne(y => y.Character); */
 
-             modelBuilder.Entity<CharacterDto>()
-                 .HasMany(x => x.Friends)
-                 .WithOne(y => y.Character);
+            modelBuilder.Entity<CharacterDto>()
+                .HasMany(x => x.Friends)
+                .WithOne(y => y.Character);
 
             modelBuilder.Entity<CharacterDto>()
                 .HasOne(x => x.Gens)
@@ -123,6 +123,7 @@ namespace MuEmu.Entity
                 .Navigation(x => x.Character)
                 .UsePropertyAccessMode(PropertyAccessMode.Property)
                 .AutoInclude();
+
         }
 
         public DbSet<AccountDto> Accounts { get; set; }
@@ -145,5 +146,6 @@ namespace MuEmu.Entity
         public DbSet<GuildMatchingDto> GuildMatching { get; set; }
         public DbSet<GuildMatchingJoinDto> GuildMatchingJoin { get; set; }
         public DbSet<SellDto> Sell { get; set; }
+        public DbSet<MuHelperDto> MuHelper { get; set; }
     }
 }

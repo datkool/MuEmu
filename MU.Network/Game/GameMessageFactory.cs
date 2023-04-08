@@ -473,6 +473,8 @@ namespace MU.Network.Game
             Register<CRuudBuy>(GameOpCode.Ruudbuy);
             Register<SRuudBuy>(GameOpCode.Ruudbuy);
             Register<SRuudSend>(GameOpCode.RuudSend);
+
+            Register<CHelperSettingSave>(GameOpCode.MuHelper);
         }
     }
 }

@@ -317,6 +317,7 @@ namespace MuEmu
                     .RegisterRule<CWarehouseMoney>(MustBePlaying)
                     .RegisterRule<CWarehouseUseEnd>(MustBePlaying)
                     .RegisterRule<CWarp>(MustBePlaying)
+                    .RegisterRule<CHelperSettingSave>(MustBePlaying)
             };
             var mf = new MessageFactory[]
             {
